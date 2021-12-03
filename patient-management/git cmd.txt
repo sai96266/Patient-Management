@@ -1,0 +1,75 @@
+
+D:\PROJECT\SE Project\patient-management>git init -b main
+Initialized empty Git repository in D:/PROJECT/Usa Projects/SE Project/patient-management/.git/
+
+D:\PROJECT\SE Project\patient-management>git add .
+warning: LF will be replaced by CRLF in .gitignore.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .mvn/wrapper/MavenWrapperDownloader.java.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .mvn/wrapper/maven-wrapper.properties.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in mvnw.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in mvnw.cmd.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in patient.sql.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in pom.xml.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/main/java/com/patientmanagement/PatientManagementApplication.java.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/main/resources/application.properties.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/test/java/com/example/patientmanagement/PatientManagementApplicationTests.java.
+The file will have its original line endings in your working directory
+
+D:\PROJECT\SE Project\patient-management>git commit -m "First commit"
+[main (root-commit) 17b88d0] First commit
+ 38 files changed, 2372 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 .mvn/wrapper/MavenWrapperDownloader.java
+ create mode 100644 .mvn/wrapper/maven-wrapper.jar
+ create mode 100644 .mvn/wrapper/maven-wrapper.properties
+ create mode 100644 mvnw
+ create mode 100644 mvnw.cmd
+ create mode 100644 patient.sql
+ create mode 100644 pom.xml
+ create mode 100644 src/main/java/com/patientmanagement/PatientManagementApplication.java
+ create mode 100644 src/main/java/com/patientmanagement/Utility.java
+ create mode 100644 src/main/java/com/patientmanagement/controller/HomeController.java
+ create mode 100644 src/main/java/com/patientmanagement/controller/LoginController.java
+ create mode 100644 src/main/java/com/patientmanagement/dao/HomeDao.java
+ create mode 100644 src/main/java/com/patientmanagement/dao/LoginDao.java
+ create mode 100644 src/main/java/com/patientmanagement/daoimpl/HomeDaoImpl.java
+ create mode 100644 src/main/java/com/patientmanagement/daoimpl/LoginDaoImpl.java
+ create mode 100644 src/main/java/com/patientmanagement/model/Appointment.java
+ create mode 100644 src/main/java/com/patientmanagement/model/BillingData.java
+ create mode 100644 src/main/java/com/patientmanagement/model/Checkup.java
+ create mode 100644 src/main/java/com/patientmanagement/model/Doctor.java
+ create mode 100644 src/main/java/com/patientmanagement/model/Patient.java
+ create mode 100644 src/main/java/com/patientmanagement/model/Response.java
+ create mode 100644 src/main/java/com/patientmanagement/rowmapper/AppointmenetRowMapper.java
+ create mode 100644 src/main/java/com/patientmanagement/rowmapper/BillingRowMapper.java
+ create mode 100644 src/main/java/com/patientmanagement/rowmapper/CheckupRowMapper.java
+ create mode 100644 src/main/java/com/patientmanagement/rowmapper/DoctorRowMapper.java
+ create mode 100644 src/main/java/com/patientmanagement/rowmapper/UserRowMapper.java
+ create mode 100644 src/main/java/com/patientmanagement/service/HomeService.java
+ create mode 100644 src/main/java/com/patientmanagement/service/LoginService.java
+ create mode 100644 src/main/java/com/patientmanagement/serviceimpl/HomeServiceImpl.java
+ create mode 100644 src/main/java/com/patientmanagement/serviceimpl/LoginServiceImpl.java
+ create mode 100644 src/main/resources/application.properties
+ create mode 100644 src/main/resources/static/images/doctor-patient-healthcare-medicine.jpg
+ create mode 100644 src/main/resources/static/js/homeService.js
+ create mode 100644 src/main/resources/static/js/loginService.js
+ create mode 100644 src/main/resources/templates/home.html
+ create mode 100644 src/main/resources/templates/login.html
+ create mode 100644 src/test/java/com/example/patientmanagement/PatientManagementApplicationTests.java
+
+D:\PROJECT\SE Project\patient-management>git remote add origin https://github.com/sai96266/Patient-Management.git
+
+D:\PROJECT\SE Project\patient-management>git remote -v
+origin  https://github.com/sai96266/Patient-Management.git (fetch)
+origin  https://github.com/sai96266/Patient-Management.git (push)
+
+D:\PROJECT\SE Project\patient-management>git push origin main

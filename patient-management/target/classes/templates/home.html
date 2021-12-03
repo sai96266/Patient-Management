@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+   <head>
+        <title>Patient Management</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="js/homeService.js"></script>
+    </head>
+    <body onload="onPageload()">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Patient Management</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active menuCls" menuType="APPOINTMENT">
+                  <a class="nav-link" href="#">Appointment</a>
+                </li>
+                <li class="nav-item menuCls" menuType="CHECKUP">
+                  <a class="nav-link" href="#">Check Up History</a>
+                </li>
+                <li class="nav-item menuCls" menuType="BILLING">
+                  <a class="nav-link" href="#">Billing</a>
+                </li>
+              </ul>
+              <span class="navbar-text" style="cursor: pointer;">
+                <i class="fa fa-sign-out" style="font-size: 20px;" onclick="logout()">Logout</i> 
+              </span>
+            </div>
+          </nav>
+          <!-- Appointment -->
+          <div class="p-0 m-3" id="appointmentMainDiv">
+            <form>
+                <div class="form-row col-md-12">
+                  <div class="col-md-6 mb-3">
+                    <label for="patientNameId">Doctor Name</label>
+                    <select class="form-control" id="doctorNameId">
+                        <option value="">Select Name</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="contactId">Charges Fee</label>
+                    <input type="number" class="form-control" id="chargesFeeId" value="" readonly>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="dobId">Appointment Date</label>
+                    <input type="date" class="form-control" id="appointmentDate" value="" required>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="contactId">Appointment Time</label>
+                    <select class="form-control" id="appontmentTimeId">
+                     <option value="">Select Time</option>
+                     <option value="Morning">Morning</option>
+                     <option value="Day">Day</option>
+                     <option value="Evening">Evening</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                    <button type="button" class="border btn btn-primary float-right mr-1 mb-2" onclick="submitAppointmentData()">Submit</button>
+                    <button type="reset" class="border btn btn-light float-right mr-2">Clear</button>
+                </div>
+              </form>
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Appointment Id</th>
+                    <th scope="col">Doctor Name</th>
+                    <th scope="col">Charges Fee</th>
+                    <th scope="col">Appointment Date</th>
+                    <th scope="col">Appointment Time</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="appointmentTableBodyId">
+                </tbody>
+              </table>
+              <!-- checkup modal -->
+              <div class="modal fade" id="checkUpModalId">
+                <div class="modal-dialog" style="max-width: 1000px!important;">
+                  <div class="modal-content">
+                  
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Check Up</h4>
+                      <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form>
+                          <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                              <label for="appointmentId">Appointment Id</label>
+                              <input type="text" class="form-control" id="appointmentId" value="" readonly>
+                              <input type="hidden" id="hiddenAmountId" value="">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label for="bloodPresureId">Blood Pressure</label>
+                              <input type="text" class="form-control" id="bloodPresureId" value="" placeholder="Enter Blood Presure" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label for="weightId">Weight</label>
+                              <input type="text" class="form-control" id="weightId" placeholder="Enter Weight" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label for="diseaseId">Disease</label>
+                              <textarea id="diseaseId" class="form-control"></textarea>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                              <label for="remarkId">Remark</label>
+                              <textarea id="remarkId" class="form-control"></textarea>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="reset" class="border btn btn-light" data-dismiss="modal">Close</button>
+                      <button type="button" class="border btn btn-primary" onclick="submitCheckupData()">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- Checkup History -->
+          <div class="p-0 m-3" id="checkupHistoryMainDivId">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Appointment Id</th>
+                  <th scope="col">Disease</th>
+                  <th scope="col">Blood Pressure</th>
+                  <th scope="col">Weight</th>
+                  <th scope="col">Remark</th>
+                </tr>
+              </thead>
+              <tbody id="checkupHistoryTableBodyId">
+              </tbody>
+            </table>
+          </div>
+          <!-- Billing -->
+          <div class="p-0 m-3" id="billingMainDivId">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th class="col-md-2" scope="col">#</th>
+                  <th class="col-md-3" scope="col">Appointment Id</th>
+                  <th class="col-md-4" scope="col">Amount</th>
+                  <th class="col-md-3" scope="col">Payment</th>
+                </tr>
+              </thead>
+              <tbody id="billingTableBodyId">
+              </tbody>
+            </table>
+            <!-- process to pay -->
+            <div class="modal fade" id="processToPayModalId">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Process to pay</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                      <form>
+                        <div class="form-row">
+                          <div class="col-md-12 mb-3">
+                            <label for="ammountId">Ammount</label>
+                            <input type="text" class="form-control" id="ammountId" value="" readonly>
+                            <input type="hidden" id="hiddenAppointmentId" value="">
+                            <input type="hidden" id="hiddenBillingId" value="">
+                          </div>
+                          <div class="col-md-12 mb-3">
+                            <label for="paymentModeId">Payment Mode</label>
+                            <select class="form-control" id="paymentModeId">
+                              <option value="">Select</option>
+                              <option value="CASH">Cash</option>
+                              <option value="CARD">Card</option>
+                              <option value="UPI">UPI</option>
+                          </select>
+                          </div>
+                        </div>
+                      </form>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="reset" class="border btn btn-light" data-dismiss="modal">Close</button>
+                    <button type="button" class="border btn btn-primary" onclick="submitPaymentData()">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </body>
+</html>
